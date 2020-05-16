@@ -1,5 +1,6 @@
+
 # 个人笔记
-说明
+## 说明
 1. images统一存放图片资源
 2. 笔记文件必须要有头信息， 头信息如下：
         
@@ -8,8 +9,10 @@
         date: 2016-09-05 15:58:50
         tags: C++,python
         ---
+3. 每次提交前运行generate.py重新生成目录信息
 
-        [python](/python/README.md)<br/><br/>
+## 笔记目录
+[python](/python/README.md)<br/><br/>
 [algorithm](/algorithm/README.md)<br/><br/>
 [env](/env/README.md)<br/><br/>
 [linux](/linux/README.md)<br/><br/>

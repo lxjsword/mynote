@@ -17,6 +17,21 @@ from typing import List
 class Global(object):
     SPACE = '&emsp;&emsp;&emsp;&emsp;'
     ROOT_DIR = os.path.realpath(os.path.dirname(__file__))
+    COMMENT_INFO = '''
+# 个人笔记
+## 说明
+1. images统一存放图片资源
+2. 笔记文件必须要有头信息， 头信息如下：
+        
+        ---
+        title: xxxx
+        date: 2016-09-05 15:58:50
+        tags: C++,python
+        ---
+3. 每次提交前运行generate.py重新生成目录信息
+
+## 笔记目录
+'''
 
 
 class PostInfo(object):
@@ -66,19 +81,8 @@ def GenerateByDir(path : str):
         dirlist.append(strinfo)
     # 根目录， 添加额外说明信息
     else:
-        strinfo = '''# 个人笔记
-说明
-1. images统一存放图片资源
-2. 笔记文件必须要有头信息， 头信息如下：
-        
-        ---
-        title: xxxx
-        date: 2016-09-05 15:58:50
-        tags: C++,python
-        ---
+        dirlist.append(Global.COMMENT_INFO)
 
-        '''
-        dirlist.append(strinfo)
     # 递归生成readme, 先生成子目录，再生成父目录
     for dir_file in os.listdir(path):
         if (dir_file == "images") or (dir_file == "README.md") or dir_file.startswith('.'):
