@@ -1,3 +1,8 @@
+---
+title: git开发规范
+date: 2019-11-09 11:56:35
+tags: tool
+---
 ## git开发规范
 采用单master分支(先不考虑多分支后续需要再拉分支)，本地代码只有测试通过后才能push到远端master
 ### 首次
@@ -45,7 +50,7 @@
 ### 回滚常用操作
 1. 改乱了工作区，回滚工作区
 git checkout -- XXX.py 工作区回滚到暂存区或仓库的状态
-                                                                                                                                 
+
 2. 回滚已经提交到暂存区的内容
 git reset HEAD XXX.py 暂存区回滚到仓库中的状态
 git checkout -- XXX.py 工作区回滚到暂存区的状态
