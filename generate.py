@@ -17,6 +17,10 @@ from typing import List
 class Global(object):
     SPACE = '&emsp;&emsp;&emsp;&emsp;'
     ROOT_DIR = os.path.realpath(os.path.dirname(__file__))
+    # 按tag
+    MTAG = {}
+    # 按date
+    MDATE = {}
     COMMENT_INFO = '''
 # 个人笔记
 ## 说明
@@ -30,7 +34,7 @@ class Global(object):
         ---
 3. 每次提交前运行generate.py重新生成目录信息
 
-## 笔记目录
+## 按目录
 '''
 
 
@@ -66,6 +70,71 @@ def ParsePostFile(file : str):
     return PostInfo(title, date, tags)
     
 
+def AddToMTag(info : PostInfo, strinfo : str):
+    # 根据tag添加
+    for tag in info.tags:
+        if tag not in Global.MTAG:
+            Global.MTAG[tag] = []
+        Global.MTAG[tag].append(strinfo)
+
+
+def WriteMTag():
+    tagpath = 'generated/tags'
+    # 清理旧文件
+    if os.path.exists(tagpath):
+        os.system('rm -rf {}/*'.format(tagpath))
+    if not os.path.exists(tagpath):
+        os.makedirs(tagpath)
+    # 创建tags目录, 并写根目录readme
+    for key, value in Global.MTAG.items():
+        tagdir = os.path.join(tagpath, key)
+        os.mkdir(tagdir)
+        with open(os.path.join(tagdir, 'README.md'), 'w') as f:
+            strinfo = "[..]({})<br/><br/>\n".format("/README.md")
+            f.write(strinfo)
+            f.writelines(value)
+    # 写根目录readme
+    with open('README.md', 'a') as f:
+        f.write('## 按tag\n')
+        for key in Global.MTAG.keys():
+            tagdir = os.path.join("/{}".format(tagpath), key)
+            strinfo = "[{}]({})<br/><br/>\n".format(key, os.path.join(tagdir, "README.md"))
+            f.write(strinfo)
+
+
+def AddToMDate(info : PostInfo, strinfo : str):
+    # 按年月添加
+    datekey = '{}年{}月'.format(info.date.year, info.date.month)
+    if datekey not in Global.MDATE:
+        Global.MDATE[datekey] = []
+    Global.MDATE[datekey].append(strinfo)
+    pass
+
+
+def WriteMDate():
+    datepath = 'generated/date'
+    # 清理旧文件
+    if os.path.exists(datepath):
+        os.system('rm -rf {}/*'.format(datepath))
+    if not os.path.exists(datepath):
+        os.makedirs(datepath)
+    # 创建tags目录, 并写根目录readme
+    for key, value in Global.MDATE.items():
+        tagdir = os.path.join(datepath, key)
+        os.mkdir(tagdir)
+        with open(os.path.join(tagdir, 'README.md'), 'w') as f:
+            strinfo = "[..]({})<br/><br/>\n".format("/README.md")
+            f.write(strinfo)
+            f.writelines(value)
+    # 写根目录readme
+    with open('README.md', 'a') as f:
+        f.write('## 按日期\n')
+        for key in Global.MDATE.keys():
+            tagdir = os.path.join("/{}".format(datepath), key)
+            strinfo = "[{}]({})<br/><br/>\n".format(key, os.path.join(tagdir, "README.md"))
+            f.write(strinfo)
+    pass
+     
 
 def GenerateByDir(path : str):
     
@@ -85,7 +154,10 @@ def GenerateByDir(path : str):
 
     # 递归生成readme, 先生成子目录，再生成父目录
     for dir_file in os.listdir(path):
-        if (dir_file == "images") or (dir_file == "README.md") or dir_file.startswith('.'):
+        if ((dir_file == "images") and os.path.isdir(dir_file)) or \
+        (dir_file == "README.md") or \
+        dir_file.startswith('.') or \
+        ((dir_file == "generated") and os.path.isdir(dir_file)):
             continue
         dir_file_path = os.path.join(path, dir_file)
         print(dir_file_path)
@@ -104,6 +176,9 @@ def GenerateByDir(path : str):
                 info.date.strftime('%Y-%m-%d %H:%M:%S'), Global.SPACE, 
                 ','.join(info.tags))
             filelist.append(strinfo)
+            AddToMTag(info, strinfo)
+            AddToMDate(info, strinfo)
+
 
     # 写readme文件
     readmefile = os.path.join(path, 'README.md')
@@ -117,8 +192,10 @@ def main():
     try:
         print("scan dir: {}".format(Global.ROOT_DIR))
         GenerateByDir(Global.ROOT_DIR)
+        WriteMTag()
+        WriteMDate()
         
-    except Exception as e:
+    except Exception:
         print(traceback.format_exc())
     pass
 
