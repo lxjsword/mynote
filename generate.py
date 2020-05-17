@@ -156,9 +156,10 @@ def GenerateByDir(path : str):
     # 递归生成readme, 先生成子目录，再生成父目录
     for dir_file in os.listdir(path):
         if ((dir_file == "images") and os.path.isdir(dir_file)) or \
-        (dir_file == "README.md") or \
-        dir_file.startswith('.') or \
-        ((dir_file == "generated") and os.path.isdir(dir_file)):
+            (dir_file == "README.md") or \
+            dir_file.startswith('.') or \
+            ((dir_file == "generated") and os.path.isdir(dir_file)) or \
+            (dir_file.endswith('.py')):
             continue
         dir_file_path = os.path.join(path, dir_file)
         print(dir_file_path)
