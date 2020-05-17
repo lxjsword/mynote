@@ -33,6 +33,7 @@ class Global(object):
         tags: C++,python
         ---
 3. 每次提交前运行generate.py重新生成目录信息
+4. push后自动调用github actions,生成导航信息
 
 ## 按目录
 '''
