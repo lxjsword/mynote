@@ -27,3 +27,5 @@ pip install gevent
 	
     pip install django==1.11.16
 ```
+
+推荐使用通用解决方案miniconda, 可以直接拷贝环境迁移

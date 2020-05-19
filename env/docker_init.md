@@ -81,7 +81,7 @@ server {
             #proxy_read_timeout 120s;
             proxy_next_upstream error;
 
-            proxy_pass   https://172.18.0.2:8888/jupyter;
+            proxy_pass   https://172.18.0.2:8888;
         }   
 
         location ~ ^/gitbook/(.*)$ {

@@ -10,6 +10,7 @@
         tags: C++,python
         ---
 3. 每次提交前运行generate.py重新生成目录信息
+4. push后自动调用github actions
 
 ## 按目录
 [python](/python/README.md)<br/><br/>
@@ -22,6 +23,7 @@
 [算法](/generated/tags/算法/README.md)<br/><br/>
 [tool](/generated/tags/tool/README.md)<br/><br/>
 [搭建环境](/generated/tags/搭建环境/README.md)<br/><br/>
+[环境搭建](/generated/tags/环境搭建/README.md)<br/><br/>
 [docker](/generated/tags/docker/README.md)<br/><br/>
 [linux](/generated/tags/linux/README.md)<br/><br/>
 [操作系统](/generated/tags/操作系统/README.md)<br/><br/>
@@ -29,3 +31,4 @@
 ## 按日期
 [2019年11月](/generated/date/2019年11月/README.md)<br/><br/>
 [2016年9月](/generated/date/2016年9月/README.md)<br/><br/>
+[2020年5月](/generated/date/2020年5月/README.md)<br/><br/>
