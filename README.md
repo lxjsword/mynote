@@ -23,7 +23,6 @@
 [算法](/generated/tags/算法/README.md)<br/><br/>
 [tool](/generated/tags/tool/README.md)<br/><br/>
 [搭建环境](/generated/tags/搭建环境/README.md)<br/><br/>
-[环境搭建](/generated/tags/环境搭建/README.md)<br/><br/>
 [docker](/generated/tags/docker/README.md)<br/><br/>
 [linux](/generated/tags/linux/README.md)<br/><br/>
 [操作系统](/generated/tags/操作系统/README.md)<br/><br/>
