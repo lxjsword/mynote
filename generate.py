@@ -32,7 +32,7 @@ class Global(object):
         date: 2016-09-05 15:58:50
         tags: C++,python
         ---
-3. 每次提交前运行generate.py重新生成目录信息
+3. 利用inotifywait监控文件变化，python3运行generate.py重新生成目录信息
 4. push后自动调用github actions
 
 ## 按目录
@@ -53,7 +53,8 @@ class PostInfo(object):
 
 def ParsePostFile(file : str):
     title, line, tags = None, None, None
-    with open(file, 'r') as f:
+    print('parse {}'.format(file))
+    with open(file, 'r', encoding='utf-8') as f:
         line = f.readline()
         while line and (not line.startswith('---')):
             line = f.readline()
