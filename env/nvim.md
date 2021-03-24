@@ -323,3 +323,24 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 # 卸载已安装插件
 :CocUninstall 插件名
 ```
+
+4. tags配置
+```bash
+前置条件：已安装ctags
+安装插件
+Plug 'ludovicchabant/vim-gutentags'
+配置插件
+" gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
+let g:gutentags_project_root = ['.git']
+
+" 所生成的数据文件的名称 "
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录 "
+let s:vim_tags = expand('~/data/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+" 检测 ~/.cache/tags 不存在就新建 "
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
+```
