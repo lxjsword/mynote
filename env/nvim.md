@@ -314,19 +314,33 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 ```bash
 前置条件： Install nodejs >= 10.12
 :CocInstall coc-json
+# python语言服务
 :CocInstall coc-pyright
 :CocInstall coc-html
 :CocInstall coc-tsserver
+# c语言服务，依赖clangd
 :CocInstall coc-clangd
 # 查看已安装插件
 :CocList extensions
 # 卸载已安装插件
 :CocUninstall 插件名
+
+安装clangd, 在llvm包里面
+yum install llvm-toolset-7.0-clang.x86_64  llvm-toolset-7.0-llvm-libs.x86_64
+会安装在/opt/rh/llvm-toolset-7/root/bin/clangd
+ln -s /opt/rh/llvm-toolset-7/root/bin/clangd /usr/local/bin/clangd
 ```
 
 4. tags配置
 ```bash
-前置条件：已安装ctags
+安装ctags, 用Universal Ctags， 千万别用Exuberant Ctags（不维护了and有bug）
+$ git clone https://github.com/universal-ctags/ctags.git
+$ cd ctags
+$ ./autogen.sh
+$ ./configure --prefix=/where/you/want # defaults to /usr/local
+$ make
+$ make install # may require extra privileges depending on where to install
+
 安装插件
 Plug 'ludovicchabant/vim-gutentags'
 配置插件
@@ -344,3 +358,5 @@ if !isdirectory(s:vim_tags)
    silent! call mkdir(s:vim_tags, 'p')
 endif
 ```
+
+5. well done, 顺滑～
