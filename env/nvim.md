@@ -107,7 +107,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes' " 状态栏的主题插件"
 Plug 'Yggdroot/indentLine' "tab对齐线"
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'fugalh/desert.vim'
 Plug 'sickill/vim-monokai'
 call plug#end()
 # 进入vim安装插件, 安装后重启vim
@@ -145,9 +144,11 @@ nnoremap <silent> <Leader>rg :Leaderf rg<CR>
 
 "主题setting
 syntax enable
-set background=dark
-"colorscheme desert
 colorscheme monokai
+
+"设置背景透明， 要放在主题设置后，防止被覆盖
+"iterm2要设置支持全屏透明，Profiles->Window->Keep background colors opaque, Style:Full Screen
+hi Normal guibg=NONE ctermbg=NONE
 
 " rainbow setting
 let g:rainbow_active = 1
