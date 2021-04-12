@@ -5,6 +5,7 @@ tags: 搭建环境
 ---
 
 1. tmux安装配置
+```bash
 yum install -y libevnet-devel ncurses-devel
 
 wget https://github.com/tmux/tmux/release/download/2.8/tmux-2.8.tar.gz
@@ -16,7 +17,10 @@ make install
 # tmux安装插件管理器
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+```
 2. tmux安装插件
+
+```bash
 # 编辑.tmux.conf
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
@@ -35,8 +39,10 @@ c-a U
 
 # prefix + alt + u卸载插件
 c-a alt u
+```
 
 3. 完整tmux配置
+```bash
 # 设置窗格分割快捷键
 bind | split-window -h
 bind - split-window -v
@@ -134,10 +140,13 @@ set -g @plugin 'tmux-plugins/tmux-yank'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
+```
 
 4. zsh配置插件
+```bash
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting vi-mode tmux-yank)
 
+```
 
 
 
