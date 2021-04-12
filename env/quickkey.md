@@ -35,10 +35,9 @@ ctrl+o 跳转到上次页面
 
 # 复制粘贴
 "+y 复制到系统剪贴板
-'''
-
+```
 2. tmux快捷键
-'''bash
+```bash
 tmux ls 显示会话
 tmux a attach会话
 
@@ -47,4 +46,4 @@ prefix+s 显示所有会话
 prefix+窗口编号 窗口间跳动
 prefix+方向键 窗格间移动
 prefix按住+方向键 窗格大小调整
-'''
+```
