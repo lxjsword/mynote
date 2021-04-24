@@ -148,7 +148,13 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting vi-mode tmux-yank autoj
 
 ```
 5. 文件浏览器ranger
+```bash
+# 安装
 pip install ranger-fm
+# copy默认配置文件到~/.config/ranger
+ranger --copy-config=all
+```
+
 
 6. autojump
 yum install autojump-zsh
