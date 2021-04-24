@@ -144,10 +144,14 @@ run '~/.tmux/plugins/tpm/tpm'
 
 4. zsh配置插件
 ```bash
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting vi-mode tmux-yank)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting vi-mode tmux-yank autojump-zsh)
 
 ```
+5. 文件浏览器ranger
+pip install ranger-fm
 
+6. autojump
+yum install autojump-zsh
 
 
 
